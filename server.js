@@ -25,4 +25,4 @@ requireDir('./src/model');
 app.use('/api', require('./src/routes'))
 
 // Inicia a api na porta passada por parametro
-app.listen(3003);
+app.listen(process.env.PORT || 3003);

@@ -1,0 +1,17 @@
+{
+  "name": "api-pedidos",
+  "version": "1.0.0",
+  "main": "server.js",
+  "author": "Augusto Zvoboter",
+  "license": "GPL-3.0-or-later",
+  "scripts": {
+    "dev": "node server.js"
+  },
+  "dependencies": {
+    "cors": "^2.8.5",
+    "express": "^4.17.1",
+    "mongoose": "^5.8.11",
+    "mongoose-paginate": "^5.0.3",
+    "require-dir": "^1.2.0"
+  }
+}

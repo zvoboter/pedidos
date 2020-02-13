@@ -2,16 +2,13 @@ const mongoose = require('mongoose');
 const Item = mongoose.model('Item');
 
 module.exports = {
-    // async index(req, res) {
-    //     const itens = await Item.find();
-
-    //     return res.json(itens);
-    // },
     async index(req, res) {
         let { page = 1, limit = 10 } = req.query;
         page = parseInt(page);
         limit = parseInt(limit);
-        const itens = await Item.paginate({}, { page, limit });
+
+        let filter = req.query.descricao ? { "descricao": { $regex: new RegExp(req.query.descricao, "i") } } : {};
+        const itens = await Item.paginate(filter, { page, limit });
 
         return res.json(itens);
     },

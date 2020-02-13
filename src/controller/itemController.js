@@ -2,7 +2,7 @@ const mongoose = require('mongoose');
 const Item = mongoose.model('Item');
 
 module.exports = {
-    async index(req, res) {
+    async search(req, res) {
         let { page = 1, limit = 10 } = req.query;
         page = parseInt(page);
         limit = parseInt(limit);
@@ -12,12 +12,12 @@ module.exports = {
 
         return res.json(itens);
     },
-    async show(req, res) {
+    async getById(req, res) {
         const item = await Item.findById(req.params.id);
 
         return res.json(item);
     },
-    async store(req, res) {
+    async insert(req, res) {
         const item = await Item.create(req.body);
 
         return res.json(item);
@@ -27,7 +27,7 @@ module.exports = {
 
         return res.json(item);
     },
-    async destroy(req, res) {
+    async delete(req, res) {
         const item = await Item.findByIdAndRemove(req.params.id);
 
         return res.send();

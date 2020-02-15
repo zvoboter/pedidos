@@ -10,10 +10,14 @@ const ItemSchema = new mongoose.Schema({
         type: Number,
         required: true
     },
-    imagem: {
+    imagemBuffer: {
         type: Buffer,
         contentType: String
+    },
+    imagem: {
+        type: String
     }
+
 });
 
 ItemSchema.plugin(mongoosePaginate);

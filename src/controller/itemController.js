@@ -18,8 +18,8 @@ module.exports = {
         return res.json(item);
     },
     async insert(req, res) {
-        if (req.body.image) {
-            req.body.image = new Buffer(req.body.image);
+        if (req.body.imageBuffer) {
+            req.body.imageBuffer = Buffer.from(req.body.image, 'base64');
         }
 
         const item = await Item.create(req.body);
@@ -27,8 +27,8 @@ module.exports = {
         return res.json(item);
     },
     async update(req, res) {
-        if (req.body.image) {
-            req.body.image = new Buffer(req.body.image);
+        if (req.body.imageBuffer) {
+            req.body.imageBuffer = Buffer.from(req.body.image, 'base64');
         }
 
         const item = await Item.findByIdAndUpdate(req.params.id, req.body, { new: true });

@@ -8,21 +8,29 @@ module.exports = {
         limit = parseInt(limit);
 
         let filter = req.query.descricao ? { "descricao": { $regex: new RegExp(req.query.descricao, "i") } } : {};
-        const itens = await Item.paginate(filter, { page, limit });
+        const itens = await Item.paginate(filter, { page, limit, select: '-id', lean: true });
 
         return res.json(itens);
     },
     async getById(req, res) {
-        const item = await Item.findById(req.params.id);
+        let item = await Item.findById(req.params.id).lean();
 
         return res.json(item);
     },
     async insert(req, res) {
+        if (req.body.image) {
+            req.body.image = new Buffer(req.body.image);
+        }
+
         const item = await Item.create(req.body);
 
         return res.json(item);
     },
     async update(req, res) {
+        if (req.body.image) {
+            req.body.image = new Buffer(req.body.image);
+        }
+
         const item = await Item.findByIdAndUpdate(req.params.id, req.body, { new: true });
 
         return res.json(item);

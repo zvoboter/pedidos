@@ -9,6 +9,10 @@ const ItemSchema = new mongoose.Schema({
     valor: {
         type: Number,
         required: true
+    },
+    imagem: {
+        type: Buffer,
+        contentType: String
     }
 });
 

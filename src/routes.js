@@ -4,7 +4,8 @@ const routes = express.Router();
 const itemController = require('./controller/itemController');
 const categoriaController = require('./controller/categoriaController');
 const pessoaController = require('./controller/pessoaController');
-const identificacaoController = require('./controller/identificacaoController');
+const mesaController = require('./controller/mesaController');
+const usuarioController = require('./controller/usuarioController');
 
 // Rotas
 
@@ -29,11 +30,17 @@ routes.post('/pessoa', pessoaController.insert);
 routes.delete('/pessoa/:id', pessoaController.delete);
 routes.put('/pessoa/:id', pessoaController.update);
 
-// Identificação
-routes.get('/identificacao', identificacaoController.search);
-routes.get('/identificacao/:id', identificacaoController.getById);
-routes.post('/identificacao', identificacaoController.insert);
-routes.delete('/identificacao/:id', identificacaoController.delete);
-routes.put('/identificacao/:id', identificacaoController.update);
+// Mesa
+routes.get('/mesa', mesaController.search);
+routes.get('/mesa/:id', mesaController.getById);
+routes.post('/mesa', mesaController.insert);
+routes.delete('/mesa/:id', mesaController.delete);
+routes.put('/mesa/:id', mesaController.update);
+
+routes.get('/usuario', usuarioController.search);
+routes.get('/usuario/:id', usuarioController.getById);
+routes.post('/usuario', usuarioController.insert);
+routes.delete('/usuario/:id', usuarioController.delete);
+routes.put('/usuario/:id', usuarioController.update);
 
 module.exports = routes;

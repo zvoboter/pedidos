@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 const mongoosePaginate = require('mongoose-paginate');
 
-const CategoriaSchema = new mongoose.Schema({
+const MesaSchema = new mongoose.Schema({
     descricao: {
         type: String,
         required: true,
@@ -9,6 +9,6 @@ const CategoriaSchema = new mongoose.Schema({
     }
 });
 
-CategoriaSchema.plugin(mongoosePaginate);
+MesaSchema.plugin(mongoosePaginate);
 
-mongoose.model('Categoria', CategoriaSchema);
+mongoose.model('Mesa', MesaSchema);

@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 const mongoosePaginate = require('mongoose-paginate');
 
-const ItemPedido = new mongoose.Schema({
+const PedidoItem = new mongoose.Schema({
     quantidade: {
         type: Number,
         required: true
@@ -20,6 +20,6 @@ const ItemPedido = new mongoose.Schema({
     }
 });
 
-ItemPedido.plugin(mongoosePaginate);
+PedidoItem.plugin(mongoosePaginate);
 
-mongoose.model('ItemPedido', ItemPedido);
+mongoose.model('PedidoItem', PedidoItem);

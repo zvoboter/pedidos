@@ -7,7 +7,7 @@ module.exports = {
         page = parseInt(page);
         limit = parseInt(limit);
 
-        let filter = req.query.nome ? { "descricao": { $regex: new RegExp(req.query.descricao, "i") } } : {};
+        let filter = req.query.descricao ? { "descricao": { $regex: new RegExp(req.query.descricao, "i") } } : {};
         const mesas = await Mesa.paginate(filter, { page, limit });
 
         return res.json(mesas);

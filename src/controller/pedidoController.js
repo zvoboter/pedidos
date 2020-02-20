@@ -35,12 +35,12 @@ module.exports = {
                 "$lte": filter.dataFinal
             },
             "pago": filter.pago
-        }, { page, limit, populate: ['garcom', 'cliente'] });
+        }, { page, limit, populate: ['garcom', 'cliente', 'mesa'] });
 
         return res.json(pedidos);
     },
     async getById(req, res) {
-        const pedido = await Pedido.findById(req.params.id).populate('garcom').populate('cliente');
+        const pedido = await Pedido.findById(req.params.id).populate('garcom').populate('cliente').populate('mesa');
 
         return res.json(pedido);
     },

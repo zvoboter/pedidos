@@ -1,5 +1,4 @@
-const mongoose = require('mongoose');
-const PedidoItem = mongoose.model('PedidoItem');
+const PedidoItem = require('../model/pedidoItem');
 
 module.exports = {
     async search(req, res) {

@@ -1,5 +1,4 @@
-const mongoose = require('mongoose');
-const Mesa = mongoose.model('Mesa');
+const Mesa = require('../model/mesa');
 
 module.exports = {
     async search(req, res) {

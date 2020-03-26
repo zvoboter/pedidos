@@ -18,4 +18,4 @@ const PagamentoSchema = new mongoose.Schema({
 
 PagamentoSchema.plugin(mongoosePaginate);
 
-mongoose.model('Pagamento', PagamentoSchema);
+module.exports = mongoose.model('Pagamento', PagamentoSchema);

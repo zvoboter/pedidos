@@ -1,5 +1,5 @@
-const mongoose = require('mongoose');
-const Item = mongoose.model('Item');
+const Item = require('../model/item');
+const cloudinary = require('cloudinary').v2;
 
 module.exports = {
     async search(req, res) {
@@ -18,11 +18,36 @@ module.exports = {
         return res.json(item);
     },
     async insert(req, res) {
+        if (req.body.imagem) {
+            await cloudinary.uploader.upload(`data:image/png;base64,${req.body.imagem}`,
+                function (error, result) {
+                    req.body.imagemUrl = result.url;
+                    if (result.url) {
+                        req.body.imagemUrl = result.url;
+                    } else if (error) {
+                        console.error(error);
+                    }
+                });
+            req.body.imagem = undefined;
+        }
+
         const item = await Item.create(req.body);
 
         return res.json(item);
     },
     async update(req, res) {
+        if (req.body.imagem) {
+            await cloudinary.uploader.upload(`data:image/png;base64,${req.body.imagem}`,
+                function (error, result) {
+                    if (result.url) {
+                        req.body.imagemUrl = result.url;
+                    } else if (error) {
+                        console.error(error);
+                    }
+                });
+            req.body.imagem = undefined;
+        }
+
         const item = await Item.findByIdAndUpdate(req.params.id, req.body, { new: true });
 
         return res.json(item);

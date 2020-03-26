@@ -1,8 +1,8 @@
-require('dotenv').config();
+require('dotenv').config({ path: process.env.NODE_ENV == "test" ? ".env.test" : ".env" });
 
 const express = require('express');
 const mongoose = require('mongoose');
-const requireDir = require('require-dir');
+// const requireDir = require('require-dir');
 const cors = require('cors');
 
 // Iniciando o app
@@ -19,10 +19,9 @@ mongoose.connect(process.env.MONGO_URL,
 );
 
 // Importa todos os models
-requireDir('./src/model');
+// requireDir('./src/model');
 
 // Rotas
 app.use('/api', require('./src/routes'))
 
-// Inicia a api na porta passada por parametro
-app.listen(process.env.PORT || 3003);
+module.exports = app;

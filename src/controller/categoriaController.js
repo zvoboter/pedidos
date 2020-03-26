@@ -1,5 +1,4 @@
-const mongoose = require('mongoose');
-const Categoria = mongoose.model('Categoria');
+const Categoria = require('../model/categoria');
 
 module.exports = {
     async search(req, res) {

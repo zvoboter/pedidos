@@ -34,4 +34,4 @@ const PedidoSchema = new mongoose.Schema({
 
 PedidoSchema.plugin(mongoosePaginate);
 
-mongoose.model('Pedido', PedidoSchema);
+module.exports = mongoose.model('Pedido', PedidoSchema);

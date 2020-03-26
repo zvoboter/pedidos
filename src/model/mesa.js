@@ -11,4 +11,4 @@ const MesaSchema = new mongoose.Schema({
 
 MesaSchema.plugin(mongoosePaginate);
 
-mongoose.model('Mesa', MesaSchema);
+module.exports = mongoose.model('Mesa', MesaSchema);

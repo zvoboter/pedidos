@@ -15,4 +15,4 @@ const PessoaSchema = new mongoose.Schema({
 
 PessoaSchema.plugin(mongoosePaginate);
 
-mongoose.model('Pessoa', PessoaSchema);
+module.exports = mongoose.model('Pessoa', PessoaSchema);

@@ -22,4 +22,4 @@ const PedidoItem = new mongoose.Schema({
 
 PedidoItem.plugin(mongoosePaginate);
 
-mongoose.model('PedidoItem', PedidoItem);
+module.exports = mongoose.model('PedidoItem', PedidoItem);

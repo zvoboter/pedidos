@@ -11,4 +11,4 @@ const CategoriaSchema = new mongoose.Schema({
 
 CategoriaSchema.plugin(mongoosePaginate);
 
-mongoose.model('Categoria', CategoriaSchema);
+module.exports = mongoose.model('Categoria', CategoriaSchema);
